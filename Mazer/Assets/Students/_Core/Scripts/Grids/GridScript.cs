@@ -9,9 +9,7 @@ public class GridScript : MonoBehaviour {
 	
 	public Material[] mats;
 	public float[]   costs;
-
-    public float[] weights;
-
+    
 	public Vector3 start = new Vector3(0,0);
 	public Vector3 goal = new Vector3(14,14);
 	
@@ -76,20 +74,6 @@ public class GridScript : MonoBehaviour {
 		return costs[i];
 	}
 
-    public virtual float GetEdgeWeight(GameObject go) {
-        Material mat = go.GetComponent<MeshRenderer>().sharedMaterial;
-        int i;
-
-        for (i = 0; i < mats.Length; i++)
-        {
-            if (mat.name.StartsWith(mats[i].name))
-            {
-                break;
-            }
-        }
-
-        return weights[i];
-    }
 
 	protected virtual Material GetMaterial(int x, int y){
 		return mats[Random.Range(0,mats.Length)];

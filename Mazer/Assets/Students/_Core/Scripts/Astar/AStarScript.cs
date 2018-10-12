@@ -116,7 +116,7 @@ public class AStarScript : MonoBehaviour {
 		   y >=0 && y < gridHeight)
 		{
 			Vector3 next = new Vector3(x, y);
-			float new_cost = costSoFar[current] + gridScript.GetEdgeWeight(pos[x, y]);
+            float new_cost = costSoFar[current] + gridScript.GetMovementCost(pos[x, y]);
 			if(!costSoFar.ContainsKey(next) || new_cost < costSoFar[next])
 			{
 				costSoFar[next] = new_cost;
