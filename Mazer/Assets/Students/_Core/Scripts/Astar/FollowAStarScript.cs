@@ -17,6 +17,7 @@ public class FollowAStarScript : MonoBehaviour {
 	
 	protected float startTime;
 	protected float travelStartTime;
+    public float speed = 1;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -37,7 +38,7 @@ public class FollowAStarScript : MonoBehaviour {
 	protected virtual void Update () {
 
 		if(move){
-			lerpPer += Time.deltaTime/destPos.moveCost;
+			lerpPer += speed * Time.deltaTime/destPos.moveCost;
 
 			transform.position = Vector3.Lerp(startPos.gameObject.transform.position, 
 			                                  destPos.gameObject.transform.position, 
@@ -57,6 +58,7 @@ public class FollowAStarScript : MonoBehaviour {
 
 				startPos = destPos;
 				destPos = path.Get(currentStep);
+
 			}
 		}
 	}

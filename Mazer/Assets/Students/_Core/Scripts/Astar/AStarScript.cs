@@ -69,12 +69,15 @@ public class AStarScript : MonoBehaviour {
 				break;
 			}
 			
-			for(int x = -1; x < 2; x+=2){
+			for(int x = -1; x < 2; x+=2)
+            {
 				AddNodesToFrontier((int)current.x + x, (int)current.y);
 			}
-			for(int y = -1; y < 2; y+=2){
-				AddNodesToFrontier((int)current.x, (int)current.y + y);
-			}
+            for (int y = -1; y < 2; y += 2)
+            {
+                AddNodesToFrontier((int)current.x, (int)current.y + y);
+            }
+
 		}
 
 		current = goal;
@@ -98,6 +101,7 @@ public class AStarScript : MonoBehaviour {
 			line.SetPosition(i, vec);
 			score += gridScript.GetMovementCost(go);
 			i++;
+
 		}
 
 		path.Insert(0, pos[(int)current.x, (int)current.y]);
@@ -106,17 +110,20 @@ public class AStarScript : MonoBehaviour {
 		Debug.Log(path.pathName + " Terrian Score: " + score);
 		Debug.Log(path.pathName + " Nodes Checked: " + exploredNodes);
 		Debug.Log(path.pathName + " Total Score: " + (score + exploredNodes));
+
 	}
 
 	void AddNodesToFrontier(int x, int y){
         if (visited.Contains(new Vector3(x, y))) {
             return;
         }
+
 		if(x >=0 && x < gridWidth && 
-		   y >=0 && y < gridHeight)
+		   y >=0 && y < gridHeight) 
 		{
 			Vector3 next = new Vector3(x, y);
             float new_cost = costSoFar[current] + gridScript.GetMovementCost(pos[x, y]);
+
 			if(!costSoFar.ContainsKey(next) || new_cost < costSoFar[next])
 			{
 				costSoFar[next] = new_cost;
@@ -124,8 +131,9 @@ public class AStarScript : MonoBehaviour {
 
 				frontier.Enqueue(next, priority);
 				cameFrom[next] = current;
-			}
-		}
+
+			} 
+		} 
 	}
 
 	// Update is called once per frame

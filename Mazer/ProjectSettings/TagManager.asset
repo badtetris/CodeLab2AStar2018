@@ -14,6 +14,7 @@ TagManager:
   - Grid
   - bullet
   - Tower Range
+  - Cheer
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FG
+    uniqueID: 3530135109
     locked: 0
